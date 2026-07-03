@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdolsalam Rasouli — Power Systems &amp; AI Engineer</title>
+<meta name="description" content="عبدالسلام رسولی — مهندس برق قدرت با تمرکز بر کاربرد هوش مصنوعی در سیستم‌های قدرت">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e13;
+    --bg-panel:#11161d;
+    --line:#232b35;
+    --amber:#f5a623;
+    --cyan:#4fd6e8;
+    --text:#e8ecf1;
+    --muted:#8592a3;
+    --mono:'IBM Plex Mono', monospace;
+    --sans:'Vazirmatn', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  a{color:inherit; text-decoration:none;}
+
+  /* grid texture backdrop */
+  .grid-bg{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:64px 64px;
+    opacity:.35;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 90%);
+  }
+
+  nav{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 6vw;
+    background:rgba(10,14,19,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .brand{font-family:var(--mono); font-weight:600; letter-spacing:.5px; color:var(--amber);}
+  .navlinks{display:flex; gap:28px; font-size:14.5px; color:var(--muted);}
+  .navlinks a:hover{color:var(--cyan);}
+  .navlinks{flex-wrap:wrap;}
+
+  section{position:relative; z-index:1; padding:100px 6vw;}
+  .eyebrow{
+    font-family:var(--mono); font-size:13px; letter-spacing:2px;
+    color:var(--amber); text-transform:uppercase; margin-bottom:14px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:''; width:24px; height:1px; background:var(--amber);}
+
+  /* HERO */
+  .hero{
+    min-height:92vh; display:flex; flex-direction:column; justify-content:center;
+    padding-top:60px;
+  }
+  .hero-top{display:flex; align-items:center; gap:40px; flex-wrap:wrap; margin-bottom:40px;}
+  .avatar{
+    width:120px; height:120px; border-radius:50%;
+    border:1px solid var(--line);
+    background:var(--bg-panel);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:13px; color:var(--muted); text-align:center;
+    flex-shrink:0;
+  }
+  .hero h1{
+    font-size:clamp(48px, 9vw, 108px);
+    font-weight:900; line-height:.95; letter-spacing:-1px;
+  }
+  .hero h1 span{color:var(--amber);}
+  .hero-role{
+    font-family:var(--mono); color:var(--cyan); font-size:clamp(14px,2vw,19px);
+    letter-spacing:1px; margin-top:18px;
+  }
+  .hero-desc{
+    max-width:640px; color:var(--muted); margin-top:22px; font-size:17px;
+  }
+
+  /* waveform signature */
+  .wave-wrap{width:100%; margin-top:56px;}
+  svg.wave{width:100%; height:120px; display:block;}
+  .wave path{fill:none; stroke:var(--amber); stroke-width:2;}
+  .wave .cyan{stroke:var(--cyan); opacity:.5;}
+
+  .cta-row{display:flex; gap:16px; margin-top:34px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono); font-size:13.5px; padding:13px 26px;
+    border:1px solid var(--line); border-radius:2px;
+    transition:.2s; letter-spacing:.5px;
+  }
+  .btn.primary{background:var(--amber); color:#0a0e13; border-color:var(--amber); font-weight:600;}
+  .btn.primary:hover{background:#ffb84d;}
+  .btn.ghost:hover{border-color:var(--cyan); color:var(--cyan);}
+
+  /* ABOUT */
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  .about-grid p{color:var(--muted); font-size:16px; margin-bottom:16px;}
+  .stat{
+    border-top:1px solid var(--line); padding-top:16px; margin-top:16px;
+  }
+  .stat b{font-family:var(--mono); color:var(--amber); font-size:28px; display:block;}
+  .stat span{color:var(--muted); font-size:13px;}
+  .stats-row{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+
+  /* EXPERTISE */
+  .expertise-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .exp-card{background:var(--bg); padding:32px 28px;}
+  .exp-card .num{font-family:var(--mono); color:var(--muted); font-size:13px;}
+  .exp-card h3{margin:14px 0 10px; font-size:19px; color:var(--cyan);}
+  .exp-card p{color:var(--muted); font-size:14.5px;}
+
+  /* EXPERIENCE timeline */
+  .timeline{border-right:2px solid var(--line); padding-right:32px;}
+  .t-item{position:relative; padding-bottom:44px;}
+  .t-item::before{
+    content:''; position:absolute; right:-38px; top:4px;
+    width:12px; height:12px; border-radius:50%; background:var(--amber);
+    box-shadow:0 0 0 4px rgba(245,166,35,.15);
+  }
+  .t-date{font-family:var(--mono); color:var(--amber); font-size:13px; margin-bottom:6px;}
+  .t-item h3{font-size:20px; margin-bottom:4px;}
+  .t-item .t-org{color:var(--cyan); font-size:14.5px; margin-bottom:10px;}
+  .t-item p{color:var(--muted); font-size:15px;}
+
+  /* PROJECTS */
+  .proj-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:24px;}
+  .proj-card{
+    border:1px solid var(--line); background:var(--bg-panel); padding:28px;
+    transition:.25s;
+  }
+  .proj-card:hover{border-color:var(--cyan); transform:translateY(-3px);}
+  .proj-tag{font-family:var(--mono); font-size:12px; color:var(--amber);}
+  .proj-card h3{margin:12px 0 10px; font-size:19px;}
+  .proj-card p{color:var(--muted); font-size:14.5px;}
+
+  /* EDUCATION */
+  .edu-item{display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--line); padding:22px 0; flex-wrap:wrap; gap:8px;}
+  .edu-item h3{font-size:19px;}
+  .edu-item .edu-sub{color:var(--muted); font-size:14.5px;}
+  .edu-date{font-family:var(--mono); color:var(--cyan); font-size:13.5px;}
+
+  /* CONTACT */
+  .contact-wrap{text-align:center; max-width:600px; margin:0 auto;}
+  .contact-wrap h2{font-size:clamp(32px,5vw,56px); margin-bottom:18px;}
+  .contact-wrap p{color:var(--muted); margin-bottom:34px;}
+  .contact-links{display:flex; gap:18px; justify-content:center; flex-wrap:wrap;}
+
+  footer{
+    padding:30px 6vw; text-align:center; color:var(--muted);
+    font-family:var(--mono); font-size:12.5px; border-top:1px solid var(--line);
+  }
+
+  h2.section-title{font-size:clamp(28px,4vw,44px); margin-bottom:44px;}
+
+  @media(max-width:760px){
+    .about-grid{grid-template-columns:1fr;}
+    nav{flex-direction:column; gap:14px; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<nav>
+  <div class="brand">A.RASOULI</div>
+  <div class="navlinks">
+    <a href="#about">درباره من</a>
+    <a href="#expertise">تخصص‌ها</a>
+    <a href="#experience">سوابق</a>
+    <a href="#projects">پروژه‌ها</a>
+    <a href="#education">تحصیلات</a>
+    <a href="#contact">تماس</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-top">
+    <div class="avatar">EDIT<br>PHOTO</div>
+    <div>
+      <div class="eyebrow">مهندس برق قدرت &amp; هوش مصنوعی</div>
+      <h1>عبدالسلام<br><span>رسولی</span></h1>
+    </div>
+  </div>
+  <div class="hero-role">POWER SYSTEMS ENGINEER — AI FOR SMART GRIDS</div>
+  <p class="hero-desc">
+    مهندس برق با گرایش سیستم‌های قدرت؛ علاقه‌مند و فعال در به‌کارگیری هوش مصنوعی و یادگیری ماشین
+    برای تحلیل، پیش‌بینی بار، تشخیص خطا و بهینه‌سازی عملکرد شبکه‌های برق هوشمند.
+  </p>
+
+  <div class="wave-wrap">
+    <svg class="wave" viewBox="0 0 1000 120" preserveAspectRatio="none">
+      <path class="cyan" d="M0,60 C 50,10 100,110 150,60 C 200,10 250,110 300,60 C 350,10 400,110 450,60 C 500,10 550,110 600,60 C 650,10 700,110 750,60 C 800,10 850,110 900,60 C 950,10 1000,110 1000,60"/>
+      <path d="M0,60 C 40,80 80,40 120,60 C 160,80 200,40 240,60 C 280,80 320,40 360,60 C 400,80 440,40 480,60 C 520,80 560,40 600,60 C 640,80 680,40 720,60 C 760,80 800,40 840,60 C 880,80 920,40 960,60 C 980,70 1000,55 1000,60"/>
+    </svg>
+  </div>
+
+  <div class="cta-row">
+    <a class="btn primary" href="#contact">تماس با من</a>
+    <a class="btn ghost" href="#projects">مشاهده پروژه‌ها</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="eyebrow">درباره من</div>
+  <h2 class="section-title">مسیر حرفه‌ای</h2>
+  <div class="about-grid">
+    <div>
+      <p>
+        [این بخش را با شرح واقعی خودتان جایگزین کنید] فارغ‌التحصیل/دانشجوی مهندسی برق قدرت
+        از دانشگاه شیراز هستم. علاقه اصلی من ترکیب دانش سیستم‌های قدرت با روش‌های هوش مصنوعی
+        برای حل مسائل واقعی شبکه‌های برق است.
+      </p>
+      <p>
+        حوزه‌های موردعلاقه: پیش‌بینی بار با یادگیری ماشین، تشخیص و مکان‌یابی خطا، ادغام انرژی‌های
+        تجدیدپذیر، و بهینه‌سازی پایداری شبکه با الگوریتم‌های هوشمند.
+      </p>
+    </div>
+    <div class="stats-row">
+      <div class="stat"><b>Shiraz</b><span>محل فعالیت</span></div>
+      <div class="stat"><b>Shiraz Univ.</b><span>محل تحصیل</span></div>
+      <div class="stat"><b>Power Systems</b><span>گرایش اصلی</span></div>
+      <div class="stat"><b>AI / ML</b><span>حوزه تخصصی مکمل</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="eyebrow">تخصص‌ها</div>
+  <h2 class="section-title">حوزه‌های تخصصی</h2>
+  <div class="expertise-grid">
+    <div class="exp-card">
+      <div class="num">01</div>
+      <h3>تحلیل سیستم‌های قدرت</h3>
+      <p>پخش بار، پایداری، حفاظت و طراحی شبکه‌های انتقال و توزیع.</p>
+    </div>
+    <div class="exp-card">
+      <div class="num">02</div>
+      <h3>هوش مصنوعی در شبکه برق</h3>
+      <p>مدل‌های یادگیری ماشین برای پیش‌بینی بار، تشخیص خطا و نگهداری پیش‌بینانه.</p>
+    </div>
+    <div class="exp-card">
+      <div class="num">03</div>
+      <h3>شبکه‌های هوشمند</h3>
+      <p>ادغام انرژی‌های تجدیدپذیر و بهینه‌سازی عملکرد Smart Grid.</p>
+    </div>
+    <div class="exp-card">
+      <div class="num">04</div>
+      <h3>پردازش داده و مدل‌سازی</h3>
+      <p>Python، ابزارهای شبیه‌سازی سیستم قدرت، و تحلیل داده‌های سری‌زمانی برق.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="eyebrow">سوابق کاری</div>
+  <h2 class="section-title">تجربه‌ها</h2>
+  <div class="timeline">
+    <div class="t-item">
+      <div class="t-date">[سال شروع] — اکنون</div>
+      <h3>[عنوان شغلی خود را وارد کنید]</h3>
+      <div class="t-org">[نام شرکت/سازمان]</div>
+      <p>[شرح مختصری از مسئولیت‌ها و دستاوردهای خود در این سمت بنویسید.]</p>
+    </div>
+    <div class="t-item">
+      <div class="t-date">[بازه زمانی]</div>
+      <h3>[عنوان شغلی قبلی]</h3>
+      <div class="t-org">[نام شرکت/سازمان]</div>
+      <p>[شرح مختصری از این تجربه کاری.]</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="eyebrow">پروژه‌ها</div>
+  <h2 class="section-title">پروژه‌های منتخب</h2>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <div class="proj-tag">AI / GRID</div>
+      <h3>[نام پروژه ۱]</h3>
+      <p>[توضیح کوتاه پروژه — مثلاً مدل پیش‌بینی بار شبکه با یادگیری عمیق.]</p>
+    </div>
+    <div class="proj-card">
+      <div class="proj-tag">POWER SYSTEMS</div>
+      <h3>[نام پروژه ۲]</h3>
+      <p>[توضیح کوتاه پروژه.]</p>
+    </div>
+    <div class="proj-card">
+      <div class="proj-tag">DATA</div>
+      <h3>[نام پروژه ۳]</h3>
+      <p>[توضیح کوتاه پروژه.]</p>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="eyebrow">تحصیلات</div>
+  <h2 class="section-title">مسیر آموزشی</h2>
+  <div class="edu-item">
+    <div>
+      <h3>مهندسی برق — قدرت</h3>
+      <div class="edu-sub">دانشگاه شیراز</div>
+    </div>
+    <div class="edu-date">[سال ورود] – [سال فارغ‌التحصیلی]</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="eyebrow" style="justify-content:center;">تماس</div>
+    <h2>بیایید صحبت کنیم</h2>
+    <p>برای همکاری، پروژه یا فرصت شغلی خوشحال می‌شوم از شما بشنوم.</p>
+    <div class="contact-links">
+      <a class="btn primary" href="mailto:peymanrasoulidl@gmail.com">ایمیل</a>
+      <a class="btn ghost" href="https://github.com/abdolsalam-rasouli" target="_blank">GitHub</a>
+      <a class="btn ghost" href="#">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Abdolsalam Rasouli — Built for GitHub Pages</footer>
+
+</body>
+</html>
