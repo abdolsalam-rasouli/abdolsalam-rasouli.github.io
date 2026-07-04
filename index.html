@@ -50,8 +50,9 @@
     background:var(--card); border:1px solid var(--line);
     display:flex; align-items:center; justify-content:center;
     font-family:var(--mono); font-size:13px; color:var(--sub); text-align:center;
-    filter:grayscale(1);
+    overflow:hidden;
   }
+  .avatar img{width:100%; height:100%; object-fit:cover; border-radius:50%;}
   .hero-role{font-family:var(--mono); color:var(--terracotta); letter-spacing:2px; font-size:14px; margin-bottom:18px;}
   .hero h1{font-family:var(--display); font-weight:900; font-size:clamp(56px,11vw,140px); line-height:.92; letter-spacing:-2px;}
   .hero-tagline{max-width:680px; margin:34px auto 0; font-size:19px; color:var(--sub);}
@@ -152,7 +153,9 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="avatar">ADD<br>PHOTO</div>
+  <div class="avatar">
+    <img src="me.png" alt="Abdolsalam Rasouli">
+  </div>
   <div class="hero-role">POWER SYSTEMS ENGINEER &amp; AI RESEARCHER</div>
   <h1>Abdolsalam<br>Rasouli</h1>
   <p class="hero-tagline">
