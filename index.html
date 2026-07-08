@@ -26,6 +26,9 @@
   a{color:inherit; text-decoration:none;}
   img{max-width:100%; height:auto; display:block;}
 
+  /* FIX: عنوان هر بخش زیر نوار چسبان پنهان نشود */
+  section{scroll-margin-top:90px;}
+
   /* ================= NAV (elegant) ================= */
   nav{
     position:sticky; top:0; z-index:50;
@@ -39,31 +42,23 @@
     font-size:14.5px; color:var(--sub);
     transition:box-shadow .3s ease, background .3s ease, padding .3s ease;
   }
-  /* subtle shadow + tighter padding once scrolled (added via JS) */
   nav.scrolled{
     box-shadow:0 6px 24px -12px rgba(28,26,22,.25);
     background:rgba(244,241,234,.95);
     padding-top:12px; padding-bottom:12px;
   }
-
-  /* Logo mark */
   nav .mark{
     font-family:var(--display); font-weight:900; color:var(--terracotta);
     font-size:20px; letter-spacing:.5px; line-height:1;
     margin-right:22px; padding-right:22px;
     border-right:1px solid var(--line);
   }
-
-  /* Links container */
   nav .nav-links{display:flex; align-items:center; gap:4px; flex-wrap:wrap;}
-
-  /* Each link */
   nav .nav-links a{
     position:relative;
     padding:8px 14px; border-radius:6px; font-weight:500;
     transition:color .22s ease, background .22s ease;
   }
-  /* animated underline */
   nav .nav-links a:not(.contact-btn)::after{
     content:''; position:absolute; left:14px; right:14px; bottom:4px;
     height:1.5px; background:var(--terracotta);
@@ -72,8 +67,8 @@
   }
   nav .nav-links a:not(.contact-btn):hover{color:var(--ink); background:var(--terracotta-soft);}
   nav .nav-links a:not(.contact-btn):hover::after{transform:scaleX(1);}
-
-  /* Contact button (pill) */
+  nav .nav-links a.active{color:var(--terracotta);}
+  nav .nav-links a.active:not(.contact-btn)::after{transform:scaleX(1);}
   nav .contact-btn{
     margin-left:10px;
     border:1px solid var(--terracotta); color:var(--terracotta);
@@ -85,8 +80,6 @@
     box-shadow:0 6px 18px -8px rgba(201,98,47,.7);
     transform:translateY(-1px);
   }
-
-  /* Mobile toggle */
   .nav-toggle{
     display:none; position:absolute; right:6vw; top:14px;
     background:none; border:1px solid var(--line); border-radius:8px;
@@ -95,6 +88,10 @@
   }
   .nav-toggle:hover{border-color:var(--terracotta); color:var(--terracotta);}
 
+  section{padding:clamp(64px,10vw,110px) 6vw;}
+  .eyebrow{font-family:var(--mono); color:var(--terracotta); font-size:13px; letter-spacing:2px; text-align:center;}
+  h2.section-title{font-family:var(--display); font-weight:900; font-size:clamp(30px,5vw,56px); text-align:center; margin:14px 0 clamp(36px,6vw,56px); line-height:1.1;}
+
   /* ================= HERO ================= */
   .hero{text-align:center; padding-top:clamp(48px,8vw,80px);}
   .avatar{
@@ -102,30 +99,34 @@
     background:var(--card); border:1px solid var(--line);
     display:flex; align-items:center; justify-content:center;
     font-family:var(--mono); font-size:13px; color:var(--sub); text-align:center;
-    overflow:hidden;
+    overflow:hidden; transition:transform .3s ease, box-shadow .3s ease;
   }
+  .avatar:hover{transform:scale(1.03); box-shadow:0 14px 40px -18px rgba(28,26,22,.5);}
   .avatar img{width:100%; height:100%; object-fit:cover; border-radius:50%;}
   .hero-role{font-family:var(--mono); color:var(--terracotta); letter-spacing:2px; font-size:clamp(12px,2.5vw,14px); margin-bottom:18px;}
   .hero h1{font-family:var(--display); font-weight:900; font-size:clamp(44px,11vw,140px); line-height:.92; letter-spacing:-2px; word-break:break-word;}
   .hero-tagline{max-width:680px; margin:34px auto 0; font-size:clamp(16px,2.2vw,19px); color:var(--sub);}
   .badges{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin:40px 0 26px;}
-  .badge{border:1px solid var(--line); background:var(--card); font-family:var(--mono); font-size:clamp(12px,2vw,13.5px); padding:12px 22px; border-radius:3px; color:var(--sub);}
+  .badge{border:1px solid var(--line); background:var(--card); font-family:var(--mono); font-size:clamp(12px,2vw,13.5px); padding:12px 22px; border-radius:3px; color:var(--sub); transition:border-color .25s ease, transform .2s ease;}
+  .badge:hover{border-color:var(--terracotta); transform:translateY(-2px);}
   .loc{font-family:var(--mono); font-size:13.5px; color:var(--sub); margin-bottom:36px;}
   .social-row{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
-  .social-btn{border:1px solid var(--line); background:var(--card); padding:13px 24px; border-radius:3px; font-size:14.5px; display:flex; align-items:center; gap:8px;}
-  .social-btn:hover{border-color:var(--terracotta); color:var(--terracotta);}
+  .social-btn{border:1px solid var(--line); background:var(--card); padding:13px 24px; border-radius:3px; font-size:14.5px; display:flex; align-items:center; gap:8px; transition:border-color .25s ease, color .25s ease, transform .2s ease;}
+  .social-btn:hover{border-color:var(--terracotta); color:var(--terracotta); transform:translateY(-2px);}
   .social-btn.cv{border-color:var(--terracotta); color:var(--terracotta); font-weight:600;}
   .scroll-hint{margin-top:60px; font-family:var(--mono); font-size:11.5px; letter-spacing:2px; color:var(--sub);}
 
   /* ---------- ABOUT ---------- */
   .about-wrap{max-width:820px; margin:0 auto; display:flex; flex-direction:column; gap:34px;}
-  .about-block{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:clamp(24px,4vw,36px);}
+  .about-block{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:clamp(24px,4vw,36px); transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;}
+  .about-block:hover{transform:translateY(-4px); box-shadow:0 18px 40px -22px rgba(28,26,22,.4); border-color:var(--terracotta);}
   .about-block h3{font-family:var(--display); font-size:clamp(20px,3vw,24px); color:var(--terracotta); margin-bottom:14px;}
   .about-block p{color:var(--sub); font-size:16px;}
 
   /* ---------- EXPERTISE ---------- */
   .exp-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:26px; max-width:1100px; margin:0 auto;}
-  .exp-card{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:clamp(24px,4vw,34px);}
+  .exp-card{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:clamp(24px,4vw,34px); transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;}
+  .exp-card:hover{transform:translateY(-4px); box-shadow:0 18px 40px -22px rgba(28,26,22,.4); border-color:var(--terracotta);}
   .exp-card h3{font-family:var(--display); font-size:21px; margin-bottom:12px;}
   .exp-card p{color:var(--sub); font-size:14.5px; margin-bottom:18px;}
   .exp-list{border-top:1px solid var(--line); padding-top:16px;}
@@ -135,35 +136,42 @@
   /* ---------- EXPERIENCE timeline ---------- */
   .timeline{max-width:820px; margin:0 auto; border-right:2px solid var(--line); padding-right:30px;}
   .t-item{position:relative; padding-bottom:50px;}
-  .t-item::before{content:''; position:absolute; right:-37px; top:5px; width:12px; height:12px; border-radius:50%; background:var(--terracotta);}
+  .t-item::before{content:''; position:absolute; right:-37px; top:5px; width:12px; height:12px; border-radius:50%; background:var(--terracotta); box-shadow:0 0 0 4px var(--cream); transition:transform .25s ease;}
+  .t-item:hover::before{transform:scale(1.4);}
   .t-head{display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
   .t-item h3{font-family:var(--display); font-size:20px;}
   .t-date{font-family:var(--mono); color:var(--sub); font-size:13px;}
   .t-org{color:var(--terracotta); font-size:14.5px; margin:4px 0 12px;}
   .t-item p{color:var(--sub); font-size:15px; margin-bottom:14px;}
   .tags{display:flex; gap:8px; flex-wrap:wrap;}
-  .tag{font-family:var(--mono); font-size:12px; border:1px solid var(--line); background:var(--card); padding:5px 12px; border-radius:3px; color:var(--sub);}
+  .tag{font-family:var(--mono); font-size:12px; border:1px solid var(--line); background:var(--card); padding:5px 12px; border-radius:3px; color:var(--sub); transition:border-color .2s ease;}
+  .t-item:hover .tag{border-color:var(--terracotta);}
 
   /* ---------- PROJECTS ---------- */
   .proj-list{max-width:1000px; margin:0 auto; display:flex; flex-direction:column; gap:28px;}
-  .proj-card{display:grid; grid-template-columns:280px 1fr; background:var(--card); border:1px solid var(--line); border-radius:6px; overflow:hidden;}
+  .proj-card{display:grid; grid-template-columns:280px 1fr; background:var(--card); border:1px solid var(--line); border-radius:6px; overflow:hidden; transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;}
+  .proj-card:hover{transform:translateY(-4px); box-shadow:0 20px 46px -24px rgba(28,26,22,.45); border-color:var(--terracotta);}
   .proj-img{background:linear-gradient(135deg,#2a2440,#1c1a16); min-height:220px;}
   .proj-body{padding:clamp(24px,4vw,32px);}
   .proj-body h3{font-family:var(--display); font-size:clamp(18px,3vw,21px); margin-bottom:12px;}
   .proj-body p{color:var(--sub); font-size:14.5px; margin-bottom:16px;}
+  .proj-card:hover .tag{border-color:var(--terracotta);}
 
   /* ---------- CERTIFICATIONS ---------- */
   .cert-subtitle{font-family:var(--mono); color:var(--terracotta); font-size:13px; letter-spacing:1px; text-transform:uppercase; text-align:center; margin:0 auto 26px; max-width:1100px;}
   .cert-subtitle:not(:first-of-type){margin-top:48px;}
   .cert-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr)); gap:22px; max-width:1100px; margin:0 auto;}
-  .cert-card{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:30px; text-align:center;}
-  .cert-icon{width:56px; height:56px; margin:0 auto 20px; border:1px solid var(--terracotta); color:var(--terracotta); border-radius:6px; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-weight:600; font-size:13px;}
+  .cert-card{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:30px; text-align:center; transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;}
+  .cert-card:hover{transform:translateY(-4px); box-shadow:0 18px 40px -22px rgba(28,26,22,.4); border-color:var(--terracotta);}
+  .cert-icon{width:56px; height:56px; margin:0 auto 20px; border:1px solid var(--terracotta); color:var(--terracotta); border-radius:6px; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-weight:600; font-size:13px; transition:background .25s ease, color .25s ease;}
+  .cert-card:hover .cert-icon{background:var(--terracotta); color:#fff;}
   .cert-card h4{font-size:16px; margin-bottom:8px;}
   .cert-card p{color:var(--sub); font-size:13.5px;}
 
   /* ---------- INNOVATION ---------- */
   .pub-list{max-width:820px; margin:0 auto;}
-  .pub-item{border-top:1px solid var(--line); padding:26px 0; display:flex; gap:22px;}
+  .pub-item{border-top:1px solid var(--line); padding:26px 0; display:flex; gap:22px; transition:padding-left .25s ease;}
+  .pub-item:hover{padding-left:8px;}
   .pub-year{font-family:var(--mono); color:var(--terracotta); font-weight:600; width:60px; flex-shrink:0;}
   .pub-item h4{font-size:17px; margin-bottom:6px;}
   .pub-item p{color:var(--sub); font-size:14px;}
@@ -171,14 +179,16 @@
 
   /* ---------- EDUCATION ---------- */
   .edu-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px; max-width:900px; margin:0 auto;}
-  .edu-card{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:28px;}
+  .edu-card{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:28px; transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;}
+  .edu-card:hover{transform:translateY(-4px); box-shadow:0 18px 40px -22px rgba(28,26,22,.4); border-color:var(--terracotta);}
   .edu-date{font-family:var(--mono); color:var(--terracotta); font-size:13px; margin-bottom:10px;}
   .edu-card h4{font-size:18px; margin-bottom:6px;}
   .edu-card p{color:var(--sub); font-size:14px; margin-bottom:14px;}
 
   /* ---------- LANGUAGES ---------- */
   .lang-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px; max-width:900px; margin:0 auto;}
-  .lang-card{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:28px;}
+  .lang-card{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:28px; transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;}
+  .lang-card:hover{transform:translateY(-4px); box-shadow:0 18px 40px -22px rgba(28,26,22,.4); border-color:var(--terracotta);}
   .lang-head{display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap;}
   .lang-head h4{font-size:19px;}
   .lang-level{font-family:var(--mono); font-size:12px; border:1px solid var(--terracotta); color:var(--terracotta); padding:4px 12px; border-radius:12px;}
@@ -188,10 +198,10 @@
   .contact-wrap{max-width:640px; margin:0 auto; text-align:center;}
   .contact-wrap p{color:var(--sub); margin-bottom:34px; font-size:15.5px;}
   .contact-list{display:flex; flex-direction:column; gap:14px; align-items:center; font-family:var(--mono); font-size:clamp(12.5px,2.6vw,14.5px); word-break:break-word;}
-  .contact-list a{display:flex; align-items:center; gap:12px; justify-content:center;}
+  .contact-list a{display:flex; align-items:center; gap:12px; justify-content:center; transition:color .2s ease;}
   .contact-list a:hover{color:var(--terracotta);}
-  .c-icon{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; flex-shrink:0; border:1px solid var(--line); border-radius:6px; font-family:var(--mono); font-size:13px; font-weight:600; color:var(--terracotta); background:var(--card);}
-  .contact-list a:hover .c-icon{border-color:var(--terracotta);}
+  .c-icon{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; flex-shrink:0; border:1px solid var(--line); border-radius:6px; font-family:var(--mono); font-size:13px; font-weight:600; color:var(--terracotta); background:var(--card); transition:background .25s ease, color .25s ease, border-color .25s ease;}
+  .contact-list a:hover .c-icon{background:var(--terracotta); color:#fff; border-color:var(--terracotta);}
 
   footer{text-align:center; padding:34px; font-family:var(--mono); font-size:12px; color:var(--sub); border-top:1px solid var(--line);}
 
@@ -200,6 +210,7 @@
     .proj-card{grid-template-columns:200px 1fr;}
   }
   @media(max-width:768px){
+    section{scroll-margin-top:78px;}
     nav{justify-content:flex-start; gap:0; padding:16px 6vw; flex-direction:column; align-items:stretch;}
     .nav-toggle{display:block;}
     nav .mark{position:absolute; left:6vw; top:16px; border-right:none; margin:0; padding:0;}
@@ -227,6 +238,7 @@
   }
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
+    *{transition:none !important;}
   }
 </style>
 </head>
@@ -279,22 +291,18 @@
   <div class="eyebrow">01</div>
   <h2 class="section-title">About</h2>
   <div class="about-wrap">
-
     <div class="about-block">
       <h3>The Question</h3>
       <p>The question I find most valuable is not "how do we implement AI"; it is <em>where would the right AI solution create genuine value?</em> In power systems that might mean forecasting demand accurately enough to change how a utility plans its day, detecting a fault before it cascades, or surfacing an insight from operational data that was simply not visible before. Over five years across energy, utilities, and applied research, I have built my practice around that distinction: finding the problems where AI can make a real difference, and then doing the rigorous work of realising them.</p>
     </div>
-
     <div class="about-block">
       <h3>The Method</h3>
       <p>My formal training in electrical power engineering and artificial intelligence gives me the depth to move fluently across a wide methodological toolkit — from classical machine learning and time-series forecasting to deep learning, metaheuristics, and reinforcement learning. This demands more than technical proficiency; it requires a clear understanding of the underlying power system, sound judgement on whether AI is truly the right answer, and the foresight to choose an approach that will genuinely deliver in the field.</p>
     </div>
-
     <div class="about-block">
       <h3>The Delivery</h3>
       <p>The distance between a technically sound model and an operationally trusted one is almost never algorithmic. It is a question of how clearly the solution is communicated, how naturally it integrates into existing grid and utility workflows, and how confidently the engineers who depend on it learn to use it. Closing that distance — turning a strong model into something an organisation actually relies on — is where the real work lies.</p>
     </div>
-
   </div>
 </section>
 
@@ -303,7 +311,6 @@
   <div class="eyebrow">02</div>
   <h2 class="section-title">Expertise</h2>
   <div class="exp-grid">
-
     <div class="exp-card">
       <h3>AI for Smart Grids</h3>
       <p>Machine learning models applied directly to power system problems.</p>
@@ -314,7 +321,6 @@
         <div><span>04</span> Grid optimization algorithms</div>
       </div>
     </div>
-
     <div class="exp-card">
       <h3>Power Systems Engineering</h3>
       <p>Analysis, protection, and stability of electrical transmission and distribution networks.</p>
@@ -325,7 +331,6 @@
         <div><span>04</span> Renewable energy integration</div>
       </div>
     </div>
-
     <div class="exp-card">
       <h3>Bridging AI &amp; Electrical Engineering</h3>
       <p>My core strength: turning AI theory into practical, real-world engineering solutions.</p>
@@ -336,7 +341,6 @@
         <div><span>04</span> Real-world, industry-oriented solutions</div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -345,7 +349,6 @@
   <div class="eyebrow">03</div>
   <h2 class="section-title">Professional Experience</h2>
   <div class="timeline">
-
     <div class="t-item">
       <div class="t-head">
         <h3>Research Assistant</h3>
@@ -360,7 +363,6 @@
         <span class="tag">Forecasting</span>
       </div>
     </div>
-
     <div class="t-item">
       <div class="t-head">
         <h3>AI Researcher</h3>
@@ -374,7 +376,6 @@
         <span class="tag">Data-Driven</span>
       </div>
     </div>
-
     <div class="t-item">
       <div class="t-head">
         <h3>AI Researcher</h3>
@@ -388,7 +389,6 @@
         <span class="tag">Efficiency Optimization</span>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -397,7 +397,6 @@
   <div class="eyebrow">04</div>
   <h2 class="section-title">Projects</h2>
   <div class="proj-list">
-
     <div class="proj-card">
       <div class="proj-img" style="background-image:url('Project_11.png'); background-size:cover; background-position:center;"></div>
       <div class="proj-body">
@@ -410,7 +409,6 @@
         </div>
       </div>
     </div>
-
     <div class="proj-card">
       <div class="proj-img" style="background-image:url('project-1.png'); background-size:cover; background-position:center;"></div>
       <div class="proj-body">
@@ -423,7 +421,6 @@
         </div>
       </div>
     </div>
-
     <div class="proj-card">
       <div class="proj-img" style="background:linear-gradient(135deg,#1f3d2b,#12261a);"></div>
       <div class="proj-body">
@@ -437,7 +434,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -448,60 +444,50 @@
 
   <div class="cert-subtitle">Teaching Experience</div>
   <div class="cert-grid">
-
     <div class="cert-card">
       <div class="cert-icon">TA</div>
       <h4>Electrical Circuits I &amp; II</h4>
       <p>Teaching Assistant · Shiraz University · 2 years</p>
     </div>
-
     <div class="cert-card">
       <div class="cert-icon">TA</div>
       <h4>Power System Operation</h4>
       <p>Teaching Assistant · Shiraz University · 1 year</p>
     </div>
-
     <div class="cert-card">
       <div class="cert-icon">IN</div>
       <h4>Data Mining</h4>
       <p>Instructor · Course Series</p>
     </div>
-
     <div class="cert-card">
       <div class="cert-icon">IN</div>
       <h4>Machine Learning</h4>
       <p>Instructor · Course Series</p>
     </div>
-
     <div class="cert-card">
       <div class="cert-icon">IN</div>
       <h4>Deep Learning</h4>
       <p>Instructor · Course Series</p>
     </div>
-
   </div>
 
   <div class="cert-subtitle">Online Certifications</div>
   <div class="cert-grid">
-
     <div class="cert-card">
       <div class="cert-icon">PY</div>
       <h4>Programming</h4>
       <p>Coursera · Completed</p>
     </div>
-
     <div class="cert-card">
       <div class="cert-icon">KG</div>
       <h4>Programming</h4>
       <p>Kaggle · Completed</p>
     </div>
-
     <div class="cert-card">
       <div class="cert-icon">AI</div>
       <h4>Artificial Intelligence</h4>
       <p>Coursera · Completed</p>
     </div>
-
   </div>
 </section>
 
@@ -527,15 +513,11 @@
         <em>Iranian Journal of Science and Technology, Transactions of Electrical Engineering</em>
       </div>
     </div>
-
     <div style="border-top:1px solid var(--line); padding-top:26px; text-align:center;">
-      <a href="https://scholar.google.com/citations?user=[YOUR-SCHOLAR-ID]"
-         target="_blank" rel="noopener"
-         style="color:var(--terracotta); font-size:15px; font-weight:600;">
+      <a href="https://scholar.google.com/citations?user=[YOUR-SCHOLAR-ID]" target="_blank" rel="noopener" style="color:var(--terracotta); font-size:15px; font-weight:600;">
         View the full list on Google Scholar →
       </a>
     </div>
-
   </div>
 </section>
 
@@ -621,6 +603,31 @@
 </section>
 
 <footer>© 2026 Abdolsalam Rasouli</footer>
+
+<script>
+  const navEl = document.getElementById('mainNav');
+  const links = document.querySelectorAll('.nav-links a');
+  const sections = document.querySelectorAll('section[id]');
+
+  // سایه هنگام اسکرول
+  window.addEventListener('scroll', () => {
+    navEl.classList.toggle('scrolled', window.scrollY > 12);
+  });
+
+  // بستن منوی موبایل بعد از کلیک روی هر لینک
+  links.forEach(a => a.addEventListener('click', () => navEl.classList.remove('open')));
+
+  // هایلایت لینک بخشِ فعال هنگام اسکرول
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(s => spy.observe(s));
+</script>
 
 </body>
 </html>
