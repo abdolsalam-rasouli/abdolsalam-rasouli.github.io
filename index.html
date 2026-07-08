@@ -40,8 +40,6 @@
   nav a:hover{color:var(--ink);}
   nav .contact-btn{border:1px solid var(--terracotta); color:var(--terracotta); padding:8px 18px; border-radius:3px;}
   nav .contact-btn:hover{background:var(--terracotta); color:#fff;}
-
-  /* Toggle button for mobile nav (hidden on desktop) */
   .nav-toggle{display:none; position:absolute; right:6vw; top:16px; background:none; border:1px solid var(--line); border-radius:4px; padding:8px 12px; cursor:pointer; font-family:var(--mono); color:var(--ink);}
 
   section{padding:clamp(64px,10vw,110px) 6vw;}
@@ -69,6 +67,12 @@
   .social-btn:hover{border-color:var(--terracotta); color:var(--terracotta);}
   .social-btn.cv{border-color:var(--terracotta); color:var(--terracotta); font-weight:600;}
   .scroll-hint{margin-top:60px; font-family:var(--mono); font-size:11.5px; letter-spacing:2px; color:var(--sub);}
+
+  /* ---------- ABOUT ---------- */
+  .about-wrap{max-width:820px; margin:0 auto; display:flex; flex-direction:column; gap:34px;}
+  .about-block{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:clamp(24px,4vw,36px);}
+  .about-block h3{font-family:var(--display); font-size:clamp(20px,3vw,24px); color:var(--terracotta); margin-bottom:14px;}
+  .about-block p{color:var(--sub); font-size:16px;}
 
   /* ---------- EXPERTISE ---------- */
   .exp-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:26px; max-width:1100px; margin:0 auto;}
@@ -100,6 +104,8 @@
   .proj-body p{color:var(--sub); font-size:14.5px; margin-bottom:16px;}
 
   /* ---------- CERTIFICATIONS ---------- */
+  .cert-subtitle{font-family:var(--mono); color:var(--terracotta); font-size:13px; letter-spacing:1px; text-transform:uppercase; text-align:center; margin:0 auto 26px; max-width:1100px;}
+  .cert-subtitle:not(:first-of-type){margin-top:48px;}
   .cert-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr)); gap:22px; max-width:1100px; margin:0 auto;}
   .cert-card{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:30px; text-align:center;}
   .cert-icon{width:56px; height:56px; margin:0 auto 20px; border:1px solid var(--terracotta); color:var(--terracotta); border-radius:6px; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-weight:600; font-size:13px;}
@@ -133,20 +139,18 @@
   .contact-wrap{max-width:640px; margin:0 auto; text-align:center;}
   .contact-wrap p{color:var(--sub); margin-bottom:34px; font-size:15.5px;}
   .contact-list{display:flex; flex-direction:column; gap:14px; align-items:center; font-family:var(--mono); font-size:clamp(12.5px,2.6vw,14.5px); word-break:break-word;}
+  .contact-list a{display:flex; align-items:center; gap:12px; justify-content:center;}
   .contact-list a:hover{color:var(--terracotta);}
+  .c-icon{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; flex-shrink:0; border:1px solid var(--line); border-radius:6px; font-family:var(--mono); font-size:13px; font-weight:600; color:var(--terracotta); background:var(--card);}
+  .contact-list a:hover .c-icon{border-color:var(--terracotta);}
 
   footer{text-align:center; padding:34px; font-family:var(--mono); font-size:12px; color:var(--sub); border-top:1px solid var(--line);}
 
   /* ================= RESPONSIVE BREAKPOINTS ================= */
-
-  /* Tablet */
   @media(max-width:900px){
     .proj-card{grid-template-columns:200px 1fr;}
   }
-
-  /* Small tablet / large phone */
   @media(max-width:768px){
-    /* Collapsible nav */
     nav{justify-content:flex-start; gap:0; padding:16px 6vw; flex-direction:column; align-items:stretch;}
     .nav-toggle{display:block;}
     nav .mark{position:absolute; left:6vw; top:20px;}
@@ -154,12 +158,9 @@
     nav.open .nav-links{display:flex;}
     nav .nav-links a{padding:12px 6px; border-bottom:1px solid var(--line);}
     nav .contact-btn{text-align:center; margin-top:6px;}
-
     .proj-card{grid-template-columns:1fr;}
     .proj-img{min-height:180px;}
   }
-
-  /* Phone */
   @media(max-width:600px){
     .edu-grid{grid-template-columns:1fr;}
     .lang-grid{grid-template-columns:1fr;}
@@ -171,14 +172,10 @@
     .social-btn{flex:1 1 auto; justify-content:center;}
     .hero h1{letter-spacing:-1px;}
   }
-
-  /* Very small phone */
   @media(max-width:380px){
     section{padding:56px 5vw;}
     .badge{width:100%; text-align:center;}
   }
-
-  /* Respect reduced motion */
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
   }
@@ -214,15 +211,15 @@
     to fault detection — to make electrical grids smarter, safer, and more reliable.
   </p>
   <div class="badges">
-    <div class="badge">[X]+ years experience</div>
+    <div class="badge">5+ years experience</div>
     <div class="badge">Power Systems · Smart Grids · AI</div>
     <div class="badge">B.Sc./M.Sc., Shiraz University</div>
   </div>
   <div class="loc">📍 Shiraz, Iran</div>
   <div class="social-row">
-    <a class="social-btn" href="#">LinkedIn</a>
-    <a class="social-btn" href="https://github.com/abdolsalam-rasouli" target="_blank">GitHub</a>
-    <a class="social-btn" href="mailto:peymanrasoulidl@gmail.com">Email</a>
+    <a class="social-btn" href="https://www.linkedin.com/in/abdolsalam-rasouli-b9217619b" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="social-btn" href="https://github.com/abdolsalam-rasouli" target="_blank" rel="noopener">GitHub</a>
+    <a class="social-btn" href="mailto:a.rasouli@hafez.shirazu.ac.ir">Email</a>
     <a class="social-btn cv" href="#">Download CV</a>
   </div>
   <div class="scroll-hint">SCROLL ▾</div>
@@ -232,13 +229,23 @@
 <section id="about">
   <div class="eyebrow">01</div>
   <h2 class="section-title">About</h2>
-  <div class="proj-list" style="max-width:820px;">
-    <p style="color:var(--sub); font-size:16.5px; text-align:center;">
-      [Replace with your real bio.] I am an electrical engineer specialized in power systems,
-      focused on applying artificial intelligence to real challenges in electrical grids —
-      including load forecasting, fault detection, and the integration of renewable energy
-      sources into smart grid infrastructure.
-    </p>
+  <div class="about-wrap">
+
+    <div class="about-block">
+      <h3>The Question</h3>
+      <p>The question I find most valuable is not "how do we implement AI"; it is <em>where would the right AI solution create genuine value?</em> In power systems that might mean forecasting demand accurately enough to change how a utility plans its day, detecting a fault before it cascades, or surfacing an insight from operational data that was simply not visible before. Over five years across energy, utilities, and applied research, I have built my practice around that distinction: finding the problems where AI can make a real difference, and then doing the rigorous work of realising them.</p>
+    </div>
+
+    <div class="about-block">
+      <h3>The Method</h3>
+      <p>My formal training in electrical power engineering and artificial intelligence gives me the depth to move fluently across a wide methodological toolkit — from classical machine learning and time-series forecasting to deep learning, metaheuristics, and reinforcement learning. This demands more than technical proficiency; it requires a clear understanding of the underlying power system, sound judgement on whether AI is truly the right answer, and the foresight to choose an approach that will genuinely deliver in the field.</p>
+    </div>
+
+    <div class="about-block">
+      <h3>The Delivery</h3>
+      <p>The distance between a technically sound model and an operationally trusted one is almost never algorithmic. It is a question of how clearly the solution is communicated, how naturally it integrates into existing grid and utility workflows, and how confidently the engineers who depend on it learn to use it. Closing that distance — turning a strong model into something an organisation actually relies on — is where the real work lies.</p>
+    </div>
+
   </div>
 </section>
 
@@ -274,9 +281,9 @@
       <h3>Bridging AI &amp; Electrical Engineering</h3>
       <p>My core strength: turning AI theory into practical, real-world engineering solutions.</p>
       <div class="exp-list">
-        <div><span>02</span> Prediction &amp; classification models</div>
         <div><span>01</span> Metaheuristics &amp; Reinforcement Learning</div>
-        <div><span>03</span> End-to-end pipelines </div>
+        <div><span>02</span> Prediction &amp; classification models</div>
+        <div><span>03</span> End-to-end pipelines</div>
         <div><span>04</span> Real-world, industry-oriented solutions</div>
       </div>
     </div>
@@ -341,6 +348,7 @@
   <div class="eyebrow">04</div>
   <h2 class="section-title">Projects</h2>
   <div class="proj-list">
+
     <div class="proj-card">
       <div class="proj-img" style="background-image:url('Project_11.png'); background-size:cover; background-position:center;"></div>
       <div class="proj-body">
@@ -353,6 +361,7 @@
         </div>
       </div>
     </div>
+
     <div class="proj-card">
       <div class="proj-img" style="background-image:url('project-1.png'); background-size:cover; background-position:center;"></div>
       <div class="proj-body">
@@ -365,17 +374,21 @@
         </div>
       </div>
     </div>
+
     <div class="proj-card">
-      <div class="proj-img"></div>
+      <div class="proj-img" style="background:linear-gradient(135deg,#1f3d2b,#12261a);"></div>
       <div class="proj-body">
-        <h3>[Project Name]</h3>
-        <p>[Describe another project here.]</p>
+        <h3>Smart Agriculture Advisory &amp; Chatbot Platform</h3>
+        <p>Co-built an agricultural web platform as a front-end team member, delivering an AI chatbot and a region-aware recommendation engine that suggests the most suitable crops for each area based on local conditions and needs — bringing data-driven, smart-farming guidance to growers through a clean, responsive interface.</p>
         <div class="tags">
-          <span class="tag">MATLAB</span>
-          <span class="tag">Simulation</span>
+          <span class="tag">Front-End</span>
+          <span class="tag">AI Chatbot</span>
+          <span class="tag">Smart Agriculture</span>
+          <span class="tag">Recommendation System</span>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -384,7 +397,6 @@
   <div class="eyebrow">05</div>
   <h2 class="section-title">Certifications &amp; Teaching</h2>
 
-  <!-- Teaching Assistant / Instructor -->
   <div class="cert-subtitle">Teaching Experience</div>
   <div class="cert-grid">
 
@@ -420,7 +432,6 @@
 
   </div>
 
-  <!-- Online Certifications -->
   <div class="cert-subtitle">Online Certifications</div>
   <div class="cert-grid">
 
@@ -444,7 +455,6 @@
 
   </div>
 </section>
-
 
 <!-- INNOVATION -->
 <section id="innovation" style="background:var(--cream);">
@@ -471,7 +481,7 @@
 
     <div style="border-top:1px solid var(--line); padding-top:26px; text-align:center;">
       <a href="https://scholar.google.com/citations?user=[YOUR-SCHOLAR-ID]"
-         target="_blank"
+         target="_blank" rel="noopener"
          style="color:var(--terracotta); font-size:15px; font-weight:600;">
         View the full list on Google Scholar →
       </a>
@@ -516,15 +526,14 @@
       <p style="color:var(--sub); font-size:14px; margin-bottom:14px;">Used fluently for research papers, technical communication, and international collaboration.</p>
       <blockquote>"Actions speak louder than words."</blockquote>
     </div>
-<div class="lang-card">
-  <div class="lang-head"><h4>Kurdish</h4><span class="lang-level">Native</span></div>
-  <p style="color:var(--sub); font-size:14px; margin-bottom:14px;">My mother tongue, spoken fluently at home and within the Kurdish community.</p>
-  <blockquote>
-    «شیوەنی من شیوەنی ئینسانییە / بانگی ئازادی و گڕووی یەکسانییە» — هێمن موکریانی<br>
-    <span style="font-size:12.5px;">"My cry is the cry of humanity — a call for freedom and the yearning for equality." — Hemin Mukriyani</span>
-  </blockquote>
-</div>
-
+    <div class="lang-card">
+      <div class="lang-head"><h4>Kurdish</h4><span class="lang-level">Native</span></div>
+      <p style="color:var(--sub); font-size:14px; margin-bottom:14px;">My mother tongue, spoken fluently at home and within the Kurdish community.</p>
+      <blockquote>
+        «شیوەنی من شیوەنی ئینسانییە / بانگی ئازادی و گڕووی یەکسانییە» — هێمن موکریانی<br>
+        <span style="font-size:12.5px;">"My cry is the cry of humanity — a call for freedom and the yearning for equality." — Hemin Mukriyani</span>
+      </blockquote>
+    </div>
     <div class="lang-card">
       <div class="lang-head"><h4>Turkish</h4><span class="lang-level">Fluent</span></div>
       <p style="color:var(--sub); font-size:14px; margin-bottom:14px;">Comfortable with everyday conversation and reading, developed through cultural and personal connections.</p>
@@ -556,12 +565,11 @@
         <span class="c-icon">⌥</span> github.com/abdolsalam-rasouli
       </a>
       <a href="https://scholar.google.com/citations?user=[YOUR-SCHOLAR-ID]" target="_blank" rel="noopener">
-        <span class="c-icon">🎓</span> Google Scholar
+        <span class="c-icon">GS</span> Google Scholar
       </a>
     </div>
   </div>
 </section>
-
 
 <footer>© 2026 Abdolsalam Rasouli</footer>
 
