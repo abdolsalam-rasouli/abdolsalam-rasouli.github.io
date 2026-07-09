@@ -319,23 +319,19 @@
 
   /* ================= RESPONSIVE ================= */
   @media(max-width:900px){
-    .hero{
-      min-height:auto;
-      padding-top:50px;
-      padding-bottom:50px;
-      text-align:center;              /* همه‌چیز وسط‌چین */
+    .hero{min-height:auto; padding-top:60px; padding-bottom:60px;}
+    .hero::before{
+      background-position:center 20%;
+      -webkit-mask-image:none; mask-image:none;
     }
-    /* عکس پس‌زمینه کاملاً خاموش */
-    .hero::before{display:none;}
-    .hero::after{display:none;}
-    /* آواتار دایره‌ای روشن می‌شود */
-    .hero-avatar{display:block;}
+    .hero::after{
+      background:linear-gradient(180deg,
+        rgba(20,20,20,.55) 0%,
+        rgba(20,20,20,.85) 55%,
+        rgba(20,20,20,.97) 100%);
+    }
     .hero-text{max-width:100%;}
-    /* وسط‌چین کردن همه اجزا */
-    .hero-tagline{margin-left:auto; margin-right:auto;}
-    .badges{justify-content:center;}
-    .social-row{justify-content:center;}
-    .loc{text-align:center;}
+    .badges, .social-row{justify-content:flex-start;}
     .proj-card{grid-template-columns:200px 1fr;}
   }
   @media(max-width:768px){
@@ -351,7 +347,6 @@
     nav .contact-btn{text-align:center; margin:8px 0 0;}
   }
   @media(max-width:600px){
-    .hero-avatar{width:128px; height:128px;}
     .edu-grid{grid-template-columns:1fr;}
     .lang-grid{grid-template-columns:1fr;}
     .proj-card{grid-template-columns:1fr;}
@@ -363,14 +358,16 @@
     .hero h1{letter-spacing:-1px;}
   }
   @media(max-width:380px){
-    .hero-avatar{width:112px; height:112px;}
     section{padding:56px 5vw;}
     .badge{width:100%; text-align:center;}
   }
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
-    *{transition:none !important; animation:none !important;}
+    *{transition:none !important;}
   }
+</style>
+</head>
+<body>  
 
 
 
