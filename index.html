@@ -148,38 +148,48 @@
     padding:clamp(40px,6vw,70px) 6vw;
     overflow:hidden;
   }
-/* عکس — چهره کامل چسبیده به لبه راست */
+/* عکس — چهره سمت راست، محو نرم از چپ و پایین */
 .hero::before{
   content:''; position:absolute; inset:0;
   background-image:url('me.png');
-  background-size:auto 100%;                 /* عکس فقط به اندازه ارتفاع، نه کل عرض */
-  background-position:right center;          /* چسبیده به لبه راست */
-  background-repeat:no-repeat;               /* بدون تکرار */
+  background-size:auto 100%;
+  background-position:right center;
+  background-repeat:no-repeat;
   z-index:0;
-  -webkit-mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.1) 40%, #000 72%);
-  mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.1) 40%, #000 72%);
+  /* دو گرادیان: یکی از چپ، یکی از پایین — با هم ترکیب می‌شوند */
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,.1) 40%, #000 72%),
+    linear-gradient(0deg, transparent 0%, rgba(0,0,0,.35) 18%, #000 45%);
+  -webkit-mask-composite:source-in;
+  mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,.1) 40%, #000 72%),
+    linear-gradient(0deg, transparent 0%, rgba(0,0,0,.35) 18%, #000 45%);
+  mask-composite:intersect;
 }
+
 
     /* محو نرم لبهٔ چپ تصویر تا با پس‌زمینه یکی شود */
     -webkit-mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.15) 30%, #000 60%);
     mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.15) 30%, #000 60%);
   }
-  /* گرادیان تیره از چپ + کمی از پایین (دوجهته) */
-  .hero::after{
-    content:''; position:absolute; inset:0; z-index:1;
-    background:
-      linear-gradient(90deg,
-        rgba(20,20,20,1) 0%,
-        rgba(20,20,20,.98) 30%,
-        rgba(20,20,20,.82) 46%,
-        rgba(20,20,20,.40) 64%,
-        rgba(20,20,20,.05) 82%,
-        rgba(20,20,20,0) 100%),
-      linear-gradient(180deg,
-        rgba(20,20,20,0) 55%,
-        rgba(20,20,20,.35) 80%,
-        rgba(20,20,20,.75) 100%);
-  }
+/* گرادیان تیره — چپ (زیر متن) + پایین (محو ملایم) */
+.hero::after{
+  content:''; position:absolute; inset:0; z-index:1;
+  background:
+    linear-gradient(90deg,
+      rgba(20,20,20,1) 0%,
+      rgba(20,20,20,.98) 30%,
+      rgba(20,20,20,.82) 46%,
+      rgba(20,20,20,.40) 64%,
+      rgba(20,20,20,.05) 82%,
+      rgba(20,20,20,0) 100%),
+    linear-gradient(180deg,
+      rgba(20,20,20,0) 50%,
+      rgba(20,20,20,.30) 72%,
+      rgba(20,20,20,.70) 88%,
+      rgba(20,20,20,.92) 100%);
+}
+
   .hero-text{position:relative; z-index:2; max-width:640px;}
   .hero-role{font-family:var(--mono); color:var(--accent-2); letter-spacing:2px; font-size:clamp(12px,2.5vw,15px); font-weight:600; margin-bottom:18px; text-transform:uppercase;}
   .hero h1{font-family:var(--display); font-weight:900; font-size:clamp(38px,6vw,84px); line-height:.92; letter-spacing:-2px; word-break:break-word; color:var(--ink); text-shadow:0 2px 16px rgba(0,0,0,.35);}
