@@ -106,6 +106,7 @@
   nav .mark{
     font-family:var(--display); font-weight:900; color:var(--ink);
     font-size:24px; letter-spacing:.5px; line-height:1;
+    cursor:pointer;
   }
   nav .nav-links{display:flex; align-items:center; gap:4px; flex-wrap:wrap;}
   nav .nav-links a{
@@ -378,7 +379,7 @@
 <body>
 
 <nav id="mainNav">
-  <span class="mark">AR</span>
+  <a href="#top" class="mark">AR</a>
   <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" onclick="const n=document.getElementById('mainNav'); n.classList.toggle('open'); this.setAttribute('aria-expanded', n.classList.contains('open'));">☰ Menu</button>
   <div class="nav-links">
     <a href="#about">About</a>
@@ -394,7 +395,7 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="top">
   <div class="hero-text">
     <img class="hero-avatar" src="me.png" alt="Abdolsalam Rasouli" loading="lazy">
     <div class="hero-role">Hello, I'm — Power Systems Engineer &amp; AI Researcher</div>
