@@ -107,6 +107,7 @@
     font-family:var(--display); font-weight:900; color:var(--ink);
     font-size:24px; letter-spacing:.5px; line-height:1;
     cursor:pointer;
+    text-shadow:0 0 10px rgba(255,255,255,.85), 0 0 22px rgba(255,255,255,.5);
   }
   nav .nav-links{display:flex; align-items:center; gap:4px; flex-wrap:wrap;}
   nav .nav-links a{
@@ -343,10 +344,21 @@
   }
   @media(max-width:768px){
     section{scroll-margin-top:78px;}
-    nav{justify-content:flex-start; gap:0; flex-direction:column; align-items:stretch;}
-    .nav-toggle{display:block;}
-    nav .mark{position:absolute; left:6vw; top:18px;}
-    nav .nav-links{display:none; flex-direction:column; width:100%; gap:2px; margin-top:52px;}
+    nav{
+      flex-direction:row; flex-wrap:wrap;
+      justify-content:space-between; align-items:center;
+      gap:0;
+    }
+    .nav-toggle{
+      display:flex; align-items:center; justify-content:center;
+      position:static; align-self:flex-start;
+      width:40px; height:40px; padding:0; font-size:18px;
+    }
+    nav .mark{position:static;}
+    nav .nav-links{
+      display:none; flex-direction:column; width:100%; flex-basis:100%;
+      gap:2px; margin-top:18px;
+    }
     nav.open .nav-links{display:flex;}
     nav .nav-links a{padding:13px 8px; border-radius:6px; border-bottom:1px solid var(--line);}
     nav .nav-links a:not(.contact-btn)::after{display:none;}
@@ -380,7 +392,7 @@
 
 <nav id="mainNav">
   <a href="#top" class="mark">AR</a>
-  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" onclick="const n=document.getElementById('mainNav'); n.classList.toggle('open'); this.setAttribute('aria-expanded', n.classList.contains('open'));">☰ Menu</button>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" onclick="const n=document.getElementById('mainNav'); n.classList.toggle('open'); this.setAttribute('aria-expanded', n.classList.contains('open'));">☰</button>
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#expertise">Expertise</a>
@@ -678,6 +690,11 @@
       <div class="cert-icon">05</div>
       <h4>Best Researcher — Engineering Fields</h4>
       <p>Shiraz University, 2026</p>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">06</div>
+      <h4>Peer Reviewer</h4>
+      <p>Springer</p>
     </div>
   </div>
 </section>
